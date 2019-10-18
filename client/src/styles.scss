@@ -1,4 +1,41 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+/* SASS form styles */
+// -- Variables
+
+$light-cream: #FFFEFA;  // text on dark background
+$off-black: #2E2F38; // text on light background
+
+$brand-aqua: #124950; // navbar and foot background color
+$primary-aqua: #6CCAC6; // active buttons
+$inactive-aqua: #092C39; // inactive buttons
+$warning-yellow: #B29205; // warning buttons
+$delete-red: #931210; // delete buttons
+$secondary-beige: #B59883; // secondary buttons
+$input-field: #EFEFEF; // off-color for form fields
+$field-border: #757065; // dark color for form field border
+$star-yellow: #FCC400; // bright yellow for saved items
+
+$font-header: 'Lato', sans-serif;
+$font-content: 'Merriweather', serif;
+
+$text-black: $off-black;
+$text-white: $light-cream;
+$nav-border: $inactive-aqua;
+
+$responsive-phone: "only screen and (max-width : 480px)";
+
+
+// -- Mixins
+
+@mixin flex-style($direction, $wrap, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// -- Styles
 
 html,
 body,
@@ -13,8 +50,7 @@ body,
 .App {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  display: flex;
-
+  @include flex-style(column, nowrap, space-around, center);
   svg {
     height: 100%;
   }
@@ -95,5 +131,192 @@ form {
     color: white;
     padding: 3px 8px;
     margin-top: 16px;
+  }
+}
+
+.form-container {
+  width: 85%;
+  max-width: 600px;
+  margin:  25px auto;
+  padding: 32px;
+  font-weight: bold;
+  color: $text-black;
+  background-color: $light-cream;
+  box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  @include flex-style(column, nowrap, space-between, center);
+
+  form {
+    width: 100%;
+  }
+
+
+  .error {
+    margin: 0;
+    position: absolute;
+    color: $delete-red;
+    font-size: 1.0rem;
+  }
+
+  input,
+  textarea {
+    margin-top: 32px;
+    padding: 1.0rem;
+    font-size: 1.6rem;
+    width: 90%;
+    display: block;
+    color: $text-black;
+    border: 1px solid $field-border;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  input:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px #5eb7b3;
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+  }
+
+  input.error {
+    border-color: red;
+  }
+
+  .input-feedback {
+    color: red;
+    margin-top: 0.25rem;
+  }
+
+  .form-select {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    margin-top: 32px;
+    border: 1px solid $field-border;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+  }
+  .form-select::-ms-expand {
+    display: none;
+  }
+  .form-select:hover {
+    border-color: #888;
+  }
+  .form-select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px #5eb7b3;
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+  }
+  .form-select option {
+    font-weight: normal;
+  }
+
+  .button-container{
+    margin-top: 32px;
+    @include flex-style(column, nowrap, space-between, center);
+  }
+  button {
+  max-width: 150px;
+  margin: auto;
+  padding: 12px 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  font-size: 1.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed !important;
+    }
+  }
+  .primary-button {
+    border-style: none;
+    border-radius: 5px;
+    background-color: $inactive-aqua;
+    color:$text-white;
+    max-width: 250px;
+    margin: auto;
+    padding: 12px 20px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    font-size: 1.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+  
+    &:active {
+      background-color: $primary-aqua;
+    }
+  
+   
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed !important;
+    }
+  }
+  
+  .secondary-button {
+    background-color: $light-cream;
+    border: 2px solid $inactive-aqua;
+    border-radius: 5px;
+    color: $text-black;
+    max-width: 250px;
+    margin: auto;
+    padding: 12px 20px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    font-size: 1.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+  
+    &:active {
+      background-color: $secondary-beige;
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed !important;
+    }
+  }
+  
+  .delete-button {
+    background-color: $delete-red;
+    border: 2px solid $primary-aqua;
+    border-radius: 5px;
+    color: $text-white;
+    max-width: 250px;
+    margin: auto;
+    padding: 12px 20px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    font-size: 1.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+  
+    &:active {
+      background-color: $secondary-beige;
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed !important;
+    }
   }
 }
