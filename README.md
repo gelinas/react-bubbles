@@ -104,5 +104,5 @@ Build a login form to authenticate your users.
 
 **Data Visualization**
 
-- [ ] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
-- [ ] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
+- [X] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
+- [X] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.

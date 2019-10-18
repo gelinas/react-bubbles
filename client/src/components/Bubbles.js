@@ -14,8 +14,9 @@ const Bubbles = ({ colors }) => {
 
   return (
     <div className="bubble-wrap">
+      {console.log("bubbledata", bubbleData)}
       <p>bubbles</p>
-      <Svg width={400} height={400}>
+      <Svg width={250} height={250}>
         <Pack
           data={{
             children: bubbleData
