@@ -50,7 +50,7 @@ const ColorList = ({ colors, updateColors }) => {
         console.log("put in ColorList response", res);
         updateColors(res.data);
         setAdding(false);
-        setColorToEdit(initialColor);
+        editColor(res.data[res.data.length-1]);
       })
       .catch(err => console.log(err.response));
   };
