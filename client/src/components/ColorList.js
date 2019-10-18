@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialColor = {
   color: "",
@@ -7,7 +8,7 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -18,13 +19,38 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
+    axiosWithAuth()
+      .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => {
+        console.log("put in ColorList response", res);
+        axiosWithAuth()
+          .get('/api/colors')
+          .then(res => {
+            console.log("get in ColorList response", res);
+            updateColors(res.data);
+          })
+          .catch(err => console.log(err.response));
+      })
+      .catch(err => console.log(err.response));
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    axiosWithAuth()
+      .delete(`/api/colors/${color.id}`)
+      .then(res => {
+        console.log("put in ColorList response", res);
+        setEditing(false);
+        axiosWithAuth()
+          .get('/api/colors')
+          .then(res => {
+            console.log("get in ColorList response", res);
+            updateColors(res.data);
+          })
+          .catch(err => console.log(err.response));
+      })
+      .catch(err => console.log(err.response));
+
   };
 
   return (
@@ -32,12 +58,15 @@ const ColorList = ({ colors, updateColors }) => {
       <p>colors</p>
       <ul>
         {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
+          <li key={color.color} className="color-item">
             <span>
               <span className="delete" onClick={() => deleteColor(color)}>
-                x
-              </span>{" "}
-              {color.color}
+                  x
+              </span>
+              {" "}
+              <span onClick={() => editColor(color)}>
+                {color.color}
+              </span>
             </span>
             <div
               className="color-box"

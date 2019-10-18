@@ -50,7 +50,7 @@ body,
 .App {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  @include flex-style(column, nowrap, space-around, center);
+  @include flex-style(row, nowrap, space-around, center);
   svg {
     height: 100%;
   }
