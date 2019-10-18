@@ -16,13 +16,13 @@ const Bubbles = ({ colors }) => {
     <div className="bubble-wrap">
       {console.log("bubbledata", bubbleData)}
       <p>bubbles</p>
-      <Svg width={250} height={250}>
+      <Svg width={600} height={600}>
         <Pack
           data={{
             children: bubbleData
           }}
           sum={datum => datum.value}
-          size={[400, 400]}
+          size={[600, 600]}
           includeRoot={false}
           nodeEnter={d => ({ ...d, r: 0 })}
           animate
