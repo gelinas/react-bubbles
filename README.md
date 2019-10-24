@@ -28,10 +28,22 @@ In this project you will create a login page and request a token from the server
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain what a token is used for.
-- [ ] What steps can you take in your web apps to keep your data secure?
-- [ ] Describe how web servers work.
+- [X] Explain what a token is used for.
+  A token is an encoded string that a client uses to access encrypted data. The token is part of a decrytion function that will reveal the encrypted data if and only if the correct token is present.
+
+- [X] What steps can you take in your web apps to keep your data secure?
+  Requiring authenication to access data in the back-end.
+  Not storing your tokens in local storage.
+  Using private routes to only allow access to certain routes when token is present.
+
+- [X] Describe how web servers work.
+  web server refers to both the hardware (physical computer) and software that stores and serves websites upon request. Modern web servers use Uniform Resource Locators (URLs) and domains that are registered with the Domain Name Service to direct requests to the appropriate server. When a client (webbrowser, API, computer, etc) makes a request via a URL, it is routed by the DNS to the correct web server for processing, and a response is sent.
+
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+  Create - POST
+  Read - GET
+  Update - PUT
+  Delete - DELETE
 
 
 ## Project Set Up
@@ -65,16 +77,16 @@ The MVP of this project will be broken up between 2 stages. Follow each step.
 
 Build a login form to authenticate your users.
 
-- [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
-- [ ] Save the token to localStorage
-- [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
-- [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
+- [X] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
+- [X] Save the token to localStorage
+- [X] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
+- [X] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
 
 ### Stage 2 - Consuming the API
 
-- [ ] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
-- [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-- [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+- [X] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
+- [X] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+- [X] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 ### API Documentation
 
@@ -88,9 +100,9 @@ Build a login form to authenticate your users.
 
 **HTTP/Axios Stretch Problems**
 
-- [ ] Build a form at the bottom of `ColorList.js` to add new colors to the colors data
+- [X] Build a form at the bottom of `ColorList.js` to add new colors to the colors data
 
 **Data Visualization**
 
-- [ ] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
-- [ ] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
+- [X] Look at [Potion JS](https://potion.js.org/). This is the library used to display the color data
+- [X] Play around with the data visualization happening in `Bubbles.js`. Have fun with this! Try different components from the library, or see if you can add props to change the UI a bit.
